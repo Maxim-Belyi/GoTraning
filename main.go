@@ -6,8 +6,10 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 )
 
 type Article struct {
@@ -84,14 +86,22 @@ func save_article(w http.ResponseWriter, r *http.Request) {
 }
 
 func setupDatabase() {
-	var err error
+	err := godotenv.Load()
+	if err != nil {
+		log.Println("Не удалось загрузить данные из .env файла")
+	}
 
-	db, err = sql.Open("mysql", "root:root@tcp(127.0.0.1:8889)/golangBd")
+	dsn := os.Getenv("DB_DSN")
+
+	if dsn == "" {
+		log.Fatal("Переменная окружения DB_DSN не задана")
+	}
+
+	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	
 	err = db.Ping()
 	if err != nil {
 		log.Fatal(err)
@@ -110,6 +120,6 @@ func handleFunc() {
 
 func main() {
 	setupDatabase()
-	defer db.Close() 
+	defer db.Close()
 	handleFunc()
 }
