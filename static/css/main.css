@@ -1,7 +1,25 @@
 body {
+  margin-inline: auto;
   background: black;
 }
 
 h1 {
   color: red;
+}
+
+h2 {
+  color: white;
+}
+
+.create-form {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.form-add {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
