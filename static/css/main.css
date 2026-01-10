@@ -19,3 +19,8 @@ h1 {
   align-items: center;
   flex-direction: column;
 }
+
+.article_inner {
+  display: flex;
+  flex-direction: column;
+}

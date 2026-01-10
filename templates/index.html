@@ -3,7 +3,23 @@
 {{template "header"}}
 
     <h1>Это index.html</h1>
-
+    <div class="article__inner">
+        <h2>Статьи</h2>
+        {{if .}}
+        {{range .}}
+        <article>
+            <h2>{{.Title}}</h2>
+            <p>{{.Anons}}</p>
+            <p>{{.FullText}}</p>
+        </article>
+    </div>
+        {{end}}
+        <a href="/create">Хотите добавить свою статью?</a>
+        {{else}}
+        <p>в библиотеке пока нет статей</p>
+        <a href="/create">Хотите написать первую?</a>
+        {{end}}
 
 {{template "footer"}}
 {{end}}
+
