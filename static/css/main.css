@@ -1,14 +1,10 @@
 body {
   margin-inline: auto;
-  background: black;
+  background: #ddf4ff;
 }
 
 h1 {
-  color: red;
-}
-
-h2 {
-  color: white;
+  color: #132202ff;
 }
 
 .create-form {

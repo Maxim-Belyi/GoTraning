@@ -56,6 +56,15 @@ func create(w http.ResponseWriter, r *http.Request) {
 	t.ExecuteTemplate(w, "create", nil)
 }
 
+func contact(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("templates/contact.html", "templates/header.html", "templates/footer.html")
+	if err != nil {
+		fmt.Fprintf(w, err.Error())
+		return
+	}
+	t.ExecuteTemplate(w, "contact", nil)
+}
+
 func save_article(w http.ResponseWriter, r *http.Request) {
 
 	title := r.FormValue("title")
@@ -115,6 +124,7 @@ func handleFunc() {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/create", create)
 	http.HandleFunc("/save_article", save_article)
+	http.HandleFunc("/contact", contact)
 	http.ListenAndServe(":8080", nil)
 }
 
