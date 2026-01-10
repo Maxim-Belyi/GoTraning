@@ -7,6 +7,10 @@ h1 {
   color: #132202ff;
 }
 
+ul,li {
+  list-style: none;
+}
+
 .create-form {
   display: flex;
   align-items: center;
