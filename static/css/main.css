@@ -1,6 +1,7 @@
 body {
   margin-inline: auto;
   background: #ddf4ff;
+    padding-inline: 10%;
 }
 
 h1 {
@@ -26,5 +27,6 @@ ul,li {
 
 .article_inner {
   display: flex;
+  align-items: center;
   flex-direction: column;
 }

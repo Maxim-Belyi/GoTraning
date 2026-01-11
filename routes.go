@@ -1,12 +1,21 @@
-package main 
+package main
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/gorilla/mux"
+)
 
 func handleFunc() {
+	rt := mux.NewRouter()
+
+	rt.HandleFunc("/", index).Methods("GET")
+	rt.HandleFunc("/create", create).Methods("GET")
+	rt.HandleFunc("/save_article", save_article).Methods("POST")
+	rt.HandleFunc("/contact", contact).Methods("GET")
+	rt.HandleFunc("/articles/{id:[0-9] +}", create).Methods("GET")
+
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
-	http.HandleFunc("/", index)
-	http.HandleFunc("/create", create)
-	http.HandleFunc("/save_article", save_article)
-	http.HandleFunc("/contact", contact)
+	http.Handle("/", rt)
 	http.ListenAndServe(":8080", nil)
 }

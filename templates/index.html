@@ -3,11 +3,11 @@
 {{template "header"}}
 
     <h1>Это index.html</h1>
-    <div class="article__inner">
+    <div class="article_inner">
         <h2>Статьи</h2>
         {{if .}}
         {{range .}}
-        <article>
+        <article class="article"> 
             <h2>{{.Title}}</h2>
             <p>{{.Anons}}</p>
             <p>{{.FullText}}</p>
