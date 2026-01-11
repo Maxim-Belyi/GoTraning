@@ -1,14 +1,18 @@
 body {
   margin-inline: auto;
   background: #ddf4ff;
-    padding-inline: 10%;
+  padding-inline: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 h1 {
   color: #132202ff;
 }
 
-ul,li {
+ul,
+li {
   list-style: none;
 }
 
@@ -29,4 +33,9 @@ ul,li {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.header__links {
+  display: flex;
+  gap: 30px;
 }
