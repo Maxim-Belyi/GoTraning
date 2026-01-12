@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"log"
+	"github.com/gorilla/mux"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -44,13 +45,19 @@ func create(w http.ResponseWriter, r *http.Request) {
 	t.ExecuteTemplate(w, "create", nil)
 }
 
+func show_post(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	w.WriteHeader(http.StatusOK)
+	fmt.Fprintf(w, "ID: %v\n", vars["id"])
+}
+
 func contact(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("templates/contact.html", "templates/header.html", "templates/footer.html")
+	t, err := template.ParseFiles("templates/detail.html", "templates/header.html", "templates/footer.html")
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 		return
 	}
-	t.ExecuteTemplate(w, "contact", nil)
+	t.ExecuteTemplate(w, "detail", nil)
 }
 
 func save_article(w http.ResponseWriter, r *http.Request) {
