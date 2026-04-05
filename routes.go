@@ -13,7 +13,7 @@ func handleFunc() {
 	rt.HandleFunc("/create", create).Methods("GET")
 	rt.HandleFunc("/save_article", save_article).Methods("POST")
 	rt.HandleFunc("/contact", contact).Methods("GET")
-	rt.HandleFunc("/articles/{id:[0-9]+}", create).Methods("GET")
+	rt.HandleFunc("/articles/{id:[0-9]+}", show_post).Methods("GET")
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static/"))))
 	http.Handle("/", rt)

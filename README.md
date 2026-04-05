@@ -1,0 +1,80 @@
+# <a href="https://github.com/maxim-belyi/test_project"> Блог на Go </a>
+
+Учебный проект для изучения веб-разработки на Go, веб-приложение для создания и просмотра статей с использованием MySQL базы данных.
+
+![](/static/images/main.png)
+
+## 🚀 О проекте
+
+Этот проект создан в учебных целях для изучения основ веб-разработки на языке Go. Приложение позволяет просматривать список статей, создавать новые статьи через веб-форму и хранить данные в MySQL базе данных.
+
+## 🛠️ Стек технологий
+<div> <img src="https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white" alt="Go"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"/> </div>
+
+## ⚙️ Как запустить локально
+
+Чтобы развернуть этот проект у себя выполните следующие шаги
+
+### Необходимые компоненты
+*   [Go](https://golang.org/dl/) (версия 1.19 или выше)
+*   [MySQL](https://www.mysql.com/) (или другой совместимый сервер баз данных)
+*   [.env файл](#настройка-базы-данных) с переменными окружения
+
+### Установка и запуск
+
+1.  **Клонируйте репозиторий:**
+    ```sh
+    git clone https://github.com/maxim-belyi/test_project.git
+    ```
+
+2.  **Перейдите в папку проекта:**
+    ```sh
+    cd test_project
+    ```
+
+3.  **Установите зависимости:**
+    ```sh
+    go mod download
+    ```
+
+4.  **Настройте базу данных:**
+    Создайте базу данных MySQL и таблицу `articles`:
+    ```sql
+    CREATE DATABASE your_database_name;
+    USE your_database_name;
+    CREATE TABLE articles (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        anons TEXT,
+        full_text TEXT
+    );
+    ```
+
+5.  **Создайте .env файл:**
+    В корне проекта создайте файл `.env` с содержимым:
+    ```
+    DB_DSN=user:password@tcp(localhost:3306)/НазваниеВашейБазыДанных?parseTime=true
+    ```
+    Замените на ваши данные.
+
+6.  **Запустите приложение:**
+    ```sh
+    go run .
+    ```
+
+После этого сайт будет доступен в браузере по адресу `http://localhost:8080`
+
+## 📝 Как добавлять новый контент
+
+*   **Новые статьи:** Перейдите на страницу `/create` и заполните форму.
+*   **Просмотр статей:** Главная страница показывает все статьи из базы данных.
+*   **Шаблоны:** HTML шаблоны находятся в папке `templates/`. Для изменения внешнего вида редактируйте файлы `header.html`, `footer.html`, `index.html`, `create.html`, `contact.html`.
+*   **Стили:** CSS файлы в `static/css/`.
+
+## 🌐 Публикация
+
+Для публикации на сервере настройте переменные окружения и базу данных на хостинге. Приложение использует порт 8080 по умолчанию.
+
+---
+
+**Примечание:** Это учебный проект, в нём могут быть упрощения и недоработки. 

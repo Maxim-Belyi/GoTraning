@@ -52,12 +52,12 @@ func show_post(w http.ResponseWriter, r *http.Request) {
 }
 
 func contact(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("templates/detail.html", "templates/header.html", "templates/footer.html")
+	t, err := template.ParseFiles("templates/contact.html", "templates/header.html", "templates/footer.html")
 	if err != nil {
 		fmt.Fprintf(w, err.Error())
 		return
 	}
-	t.ExecuteTemplate(w, "detail", nil)
+	t.ExecuteTemplate(w, "contact", nil)
 }
 
 func save_article(w http.ResponseWriter, r *http.Request) {
