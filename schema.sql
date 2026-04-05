@@ -1,8 +1,6 @@
--- SQL скрипт для инициализации базы данных
+CREATE DATABASE IF NOT EXISTS golangBd; 
 
-CREATE DATABASE IF NOT EXISTS вашаБД; -- Замените 'вашаБД' на имя вашей базы данных;
-
-USE вашаБД; -- Замените 'вашаБД' на имя вашей базы данных
+USE golangBd; 
 
 CREATE TABLE IF NOT EXISTS articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
