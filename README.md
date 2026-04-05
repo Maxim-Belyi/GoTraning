@@ -38,24 +38,18 @@
     ```
 
 4.  **Настройте базу данных:**
-    Создайте базу данных MySQL и таблицу `articles`:
-    ```sql
-    CREATE DATABASE your_database_name;
-    USE your_database_name;
-    CREATE TABLE articles (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(255) NOT NULL,
-        anons TEXT,
-        full_text TEXT
-    );
+    Выполните SQL скрипт для создания базы данных и таблицы:
+    ```sh
+    mysql -u ваш_пользователь -p < schema.sql
     ```
+    Или откройте файл `schema.sql` в MySQL клиенте и выполните его содержимое.
 
 5.  **Создайте .env файл:**
     В корне проекта создайте файл `.env` с содержимым:
     ```
-    DB_DSN=user:password@tcp(localhost:3306)/НазваниеВашейБазыДанных?parseTime=true
+    DB_DSN=user:password@tcp(localhost:3306)/golangBd?parseTime=true
     ```
-    Замените на ваши данные.
+    Замените `user` и `password` на ваши данные MySQL. База данных `golangBd` создаётся скриптом `schema.sql`.
 
 6.  **Запустите приложение:**
     ```sh
