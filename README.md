@@ -24,12 +24,12 @@
 
 1.  **Клонируйте репозиторий:**
     ```sh
-    git clone https://github.com/maxim-belyi/test_project.git
+    git clone https://github.com/Maxim-Belyi/GoTraning.git
     ```
 
 2.  **Перейдите в папку проекта:**
     ```sh
-    cd test_project
+    cd GoTraning
     ```
 
 3.  **Установите зависимости:**
