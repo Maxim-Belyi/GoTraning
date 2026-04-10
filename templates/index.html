@@ -8,9 +8,11 @@
     <article class="article">
       <h2>{{.Title}}</h2>
       <h3>{{.Anons}}</h3>
-      <p>{{.FullText}}</p>      <form action="/delete/{{.Id}}" method="post" style="display: inline;">
+      <p>{{.FullText}}</p>
+      <porm action="/delete/{{.Id}}" method="post" style="display: inline">
         <button type="submit" class="delete-btn">Удалить</button>
-      </form>    </article>
+      </form>
+    </article>
 
     {{end}}
     <a href="/create">Хотите добавить свою статью?</a>
