@@ -9,7 +9,7 @@
 Этот проект создан в учебных целях для изучения основ веб-разработки на языке Go. Приложение позволяет просматривать список статей, создавать новые статьи через веб-форму и хранить данные в MySQL базе данных.
 
 ## 🛠️ Стек технологий
-<div> <img src="https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white" alt="Go"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"/> </div>
+<div> <img src="https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white" alt="Go"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"/> </div>
 
 ## ⚙️ Как запустить локально
 
@@ -17,7 +17,7 @@
 
 ### Необходимые компоненты
 *   [Go](https://golang.org/dl/) (версия 1.19 или выше)
-*   [MySQL](https://www.mysql.com/) (или другой совместимый сервер баз данных)
+*   [MySQL](https://www.mysql.com/) (или другой совместимый сервер баз данных) или [Docker](https://www.docker.com/) для запуска MySQL в контейнере
 *   [.env файл](#настройка-базы-данных) с переменными окружения
 
 ### Установка и запуск
@@ -38,6 +38,15 @@
     ```
 
 4.  **Настройте базу данных:**
+    Выберите один из вариантов:
+    
+    **Вариант 1: Используя Docker (рекомендуется)**
+    ```sh
+    docker compose up -d
+    ```
+    Это запустит MySQL в Docker контейнере с готовой базой данных `golangBd`.
+    
+    **Вариант 2: Локальная MySQL**
     Выполните SQL скрипт для создания базы данных и таблицы:
     ```sh
     mysql -u ваш_пользователь -p < schema.sql
@@ -49,7 +58,7 @@
     ```
     DB_DSN=user:password@tcp(localhost:3306)/golangBd?parseTime=true
     ```
-    Замените `user` и `password` на ваши данные MySQL. База данных `golangBd` создаётся скриптом `schema.sql`.
+    Замените `user` и `password` на ваши данные MySQL. Если используете Docker, оставьте как есть (user: appuser, password: apppass).
 
 6.  **Запустите приложение:**
     ```sh
