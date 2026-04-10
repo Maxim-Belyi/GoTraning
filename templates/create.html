@@ -1,29 +1,31 @@
 {{define "create"}} 
 {{template "header"}}
 
-<h1>Это create.html</h1>
+<div class="container">
+  <h1>Это create.html</h1>
 
-<div class="create-form">
-  <h2>Форма добавления статьи</h2>
-  <form class="form-add" action="/save_article" method="post">
-    <input
-      type="text"
-      name="title"
-      id="title"
-      placeholder="Введите название статьи"
-    />
-    <textarea
-      name="anons"
-      id="anons"
-      placeholder="Введите анонс статьи"
-    ></textarea>
-    <textarea
-      name="full_text"
-      id="full_text"
-      placeholder="Введите текст статьи"
-    ></textarea>
-    <button>Добавить новость</button>
-  </form>
+  <div class="create-form">
+    <h2>Форма добавления статьи</h2>
+    <form class="form-add" action="/save_article" method="post">
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Введите название статьи"
+      />
+      <textarea
+        name="anons"
+        id="anons"
+        placeholder="Введите анонс статьи"
+      ></textarea>
+      <textarea
+        name="full_text"
+        id="full_text"
+        placeholder="Введите текст статьи"
+      ></textarea>
+      <button>Добавить новость</button>
+    </form>
+  </div>
 </div>
 
 {{template "footer"}} 

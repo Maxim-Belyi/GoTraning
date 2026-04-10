@@ -1,20 +1,23 @@
 {{define "index"}} {{template "header"}}
 
-<h1>Это index.html</h1>
-<div class="article_inner">
-  <h2>Статьи</h2>
-  {{if .}} {{range .}}
-  <article class="article">
-    <h2>{{.Title}}</h2>
-    <p>{{.Anons}}</p>
-    <p>{{.FullText}}</p>
-  </article>
+<div class="container">
+  <h1>Это index.html</h1>
+  <div class="article_inner">
+    <h2>Статьи</h2>
+    {{if .}} {{range .}}
+    <article class="article">
+      <h2>{{.Title}}</h2>
+      <h3>{{.Anons}}</h3>
+      <p>{{.FullText}}</p>      <form action="/delete/{{.Id}}" method="post" style="display: inline;">
+        <button type="submit" class="delete-btn">Удалить</button>
+      </form>    </article>
 
-  {{end}}
-  <a href="/create">Хотите добавить свою статью?</a>
-  {{else}}
-  <p>в библиотеке пока нет статей</p>
-  <a href="/create">Хотите написать первую?</a>
-  {{end}}
+    {{end}}
+    <a href="/create">Хотите добавить свою статью?</a>
+    {{else}}
+    <p>в библиотеке пока нет статей</p>
+    <a href="/create">Хотите написать первую?</a>
+    {{end}}
+  </div>
 </div>
 {{template "footer"}} {{end}}

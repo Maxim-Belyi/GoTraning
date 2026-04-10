@@ -1,41 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-color: #212529;
+  --border-color: #dee2e6;
+  --shadow: 0 2px 4px rgba(0,0,0,0.1);
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  margin-inline: auto;
-  background: #ddf4ff;
-  padding-inline: 10%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
-h1 {
-  color: #132202ff;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-ul,
-li {
-  list-style: none;
-}
-
-.create-form {
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  flex-direction: column;
-}
-
-.form-add {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.article_inner {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+header {
+  background-color: var(--card-background);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
 }
 
 .header__links {
   display: flex;
-  gap: 30px;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.header__links li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.header__links li a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+h1, h2 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+}
+
+.article_inner {
+  display: grid;
+  gap: 2rem;
+}
+
+.article {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.article h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.article p {
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.article a {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.article a:hover {
+  text-decoration: underline;
+}
+
+.create-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.form-add {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-add input,
+.form-add textarea {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-add input:focus,
+.form-add textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.form-add textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  margin-left: 1rem;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--secondary-color);
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+  .header__links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .create-form {
+    padding: 1rem;
+  }
 }
