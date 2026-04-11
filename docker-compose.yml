@@ -1,6 +1,18 @@
 version: '3.8'
 
 services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: golang_app
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app 
+    depends_on:
+      - mysql
+
   mysql:
     image: mysql:8.0
     container_name: golang_mysql
