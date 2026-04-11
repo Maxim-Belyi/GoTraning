@@ -93,45 +93,25 @@ func delete_article(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id := vars["id"]
 
-	// 1. Если это GET запрос — показываем страницу подтверждения
-	// if r.Method == "GET" {
-	// 	var article Article
-	// 	// Ищем статью, чтобы показать её заголовок пользователю перед удалением
-	// 	err := db.QueryRow("SELECT id, title, anons, full_text FROM articles WHERE id = ?", id).Scan(&article.Id, &article.Title, &article.Anons, &article.FullText)
-	// 	if err != nil {
-	// 		http.NotFound(w, r)
-	// 		return
-	// 	}
+	log.Println("Удаление статьи с ID:", id)
 
-	// 	t, err := template.ParseFiles("templates/delete.html", "templates/header.html", "templates/footer.html")
-	// 	if err != nil {
-	// 		http.Error(w, err.Error(), http.StatusInternalServerError)
-	// 		return
-	// 	}
-	// 	t.ExecuteTemplate(w, "delete", article)
-	// 	return
-	// }
+	stmt, err := db.Prepare("DELETE FROM `articles` WHERE `id` = ?")
+	if err != nil {
+		log.Println("Ошибка подготовки запроса:", err)
+		http.Error(w, "Внутренняя ошибка сервера", http.StatusInternalServerError)
+		return
+	}
+	defer stmt.Close()
 
-	if r.Method == "POST" {
-		log.Println("Deleting article with id:", id)
-
-		stmt, err := db.Prepare("DELETE FROM `articles` WHERE `id` = ?")
-		if err != nil {
-			log.Println("Ошибка подготовки запроса:", err)
-			http.Error(w, "Внутренняя ошибка сервера", http.StatusInternalServerError)
-			return
-		}
-		defer stmt.Close()
-
-		_, err = stmt.Exec(id)
-		if err != nil {
-			log.Println("Ошибка выполнения запроса:", err)
-			http.Error(w, "Внутренняя ошибка сервера", http.StatusInternalServerError)
-			return
-		}
-
-		log.Println("Article deleted successfully")
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+	_, err = stmt.Exec(id)
+	if err != nil {
+		log.Println("Ошибка выполнения запроса:", err)
+		http.Error(w, "Внутренняя ошибка сервера", http.StatusInternalServerError)
+		return
 	}
 
+	log.Println("Статья успешно удалена")
+
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
+

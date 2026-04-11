@@ -12,7 +12,7 @@ func handleFunc() {
 	rt.HandleFunc("/", index).Methods("GET")
 	rt.HandleFunc("/create", create).Methods("GET")
 	rt.HandleFunc("/save_article", save_article).Methods("POST")
-	rt.HandleFunc("/delete/{id:[0-9]+}", delete_article).Methods("GET", "POST")
+	rt.HandleFunc("/delete/{id:[0-9]+}", delete_article).Methods("POST")
 	rt.HandleFunc("/contact", contact).Methods("GET")
 	rt.HandleFunc("/articles/{id:[0-9]+}", show_post).Methods("GET")
 
